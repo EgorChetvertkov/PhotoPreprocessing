@@ -6,7 +6,7 @@ using System.Text;
 
 namespace PhotoPreprocessing
 {
-    public class SafeTransformer : ISafeScalator, ISafeSaver, ISafeEqualizer
+    public class SafeTransformer : ISafeScalator, ISafeSaver, ISafeEqualizer, ISafeFilter
     {
         private Mat _image;
 
@@ -83,5 +83,19 @@ namespace PhotoPreprocessing
             Cv2.Resize(src, _image, newShape, 0, 0, InterpolationFlags.Linear);
             return this;
         }
+
+        public SafeTransformer Filter(int kernelSize)
+        {
+            if (_image == null)
+            {
+                throw new ArgumentNullException(nameof(_image), "Изображение должно существовать!");
+            }
+
+            Mat src = _image;
+            Cv2.MedianBlur(src, _image, kernelSize);
+
+            return this;
+        }
+            
     }
 }

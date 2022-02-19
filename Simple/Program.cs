@@ -37,7 +37,12 @@ namespace Simple
                       {
                           try
                           {
-                              _ = new SafeTransformer(new Mat(file.FullName)).Scale(size).EqualizeHist().Save(dirInfoScaled.FullName, file.GetHashCode().ToString() + ".png");
+                              _ = new SafeTransformer(new Mat(file.FullName)).
+                              Filter(5).
+                              Scale(size).
+                              EqualizeHist().
+                              Filter(3).
+                              Save(dirInfoScaled.FullName, file.GetHashCode().ToString() + ".png");
                               Console.WriteLine($"Save image {file.GetHashCode().ToString() + ".png"}");
                           }
                           catch (Exception ex)
