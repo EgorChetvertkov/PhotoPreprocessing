@@ -96,6 +96,19 @@ namespace PhotoPreprocessing
 
             return this;
         }
-            
+
+        public SafeTransformer ContrastFilter()
+        {
+            if (_image == null)
+            {
+                throw new ArgumentNullException(nameof(_image), "Изображение должно существовать!");
+            }
+
+            Mat scr = _image;
+            int[,] kernel = new int[3, 3] { { -1, -1, -1}, { -1, 9, -1}, {-1, -1, -1 } };
+            Cv2.Filter2D(scr, _image, -1, InputArray.Create(kernel));
+
+            return this;
+        }
     }
 }

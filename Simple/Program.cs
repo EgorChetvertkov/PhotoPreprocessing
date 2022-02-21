@@ -38,10 +38,10 @@ namespace Simple
                           try
                           {
                               _ = new SafeTransformer(new Mat(file.FullName)).
-                              Filter(5).
                               Scale(size).
                               EqualizeHist().
-                              Filter(3).
+                              Filter(5).
+                              ContrastFilter().
                               Save(dirInfoScaled.FullName, file.GetHashCode().ToString() + ".png");
                               Console.WriteLine($"Save image {file.GetHashCode().ToString() + ".png"}");
                           }
