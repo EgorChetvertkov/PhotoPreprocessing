@@ -15,24 +15,18 @@ namespace Simple
         private static void PrepareImageDir()
         {
             Console.WriteLine("Set path to dir with images:");
-            string[] paths = Console.ReadLine()?.Split('&') ?? throw new ArgumentNullException("Путь должен существовать!");
+            string path = Console.ReadLine() ?? throw new ArgumentNullException("Путь должен существовать!");
             int size = 224;
 
-            foreach (string path in paths)
-            {
-                DirectoryInfo dirInfo = new(path.Trim());
+            DirectoryInfo topDir = new DirectoryInfo(path);
+            DirectoryInfo[] paths = topDir.GetDirectories();
 
+            foreach (DirectoryInfo dirInfo in paths)
+            {
                 Console.WriteLine($"Название каталога: {dirInfo.Name}");
                 Console.WriteLine($"Полное название каталога: {dirInfo.FullName}");
                 Console.WriteLine($"Корневой каталог: {dirInfo.Root}");
                 Console.WriteLine($"Размер изображения приводится к {size}");
-
-                DirectoryInfo dirInfoScaled = new(dirInfo.FullName + "_");
-
-                if (!dirInfoScaled.Exists)
-                {
-                    dirInfoScaled.Create();
-                }
 
                 if (dirInfo.Exists)
                 {
@@ -49,7 +43,7 @@ namespace Simple
                                 EqualizeHist().
                                 GammaCorrectionFilter().
                                 Scale(size).
-                                Save(dirInfoScaled.FullName, file.GetHashCode().ToString() + ".png");
+                                Save(dirInfo.FullName, file.Name);
                                 Console.WriteLine($"Save image {file.GetHashCode().ToString() + ".png"}");
                             }
                             catch (Exception ex)
