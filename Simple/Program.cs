@@ -21,6 +21,8 @@ namespace Simple
             DirectoryInfo topDir = new DirectoryInfo(path);
             DirectoryInfo[] paths = topDir.GetDirectories();
 
+            Console.WriteLine($"Число классов: {path.Length}");
+
             foreach (DirectoryInfo dirInfo in paths)
             {
                 Console.WriteLine($"Название каталога: {dirInfo.Name}");
@@ -44,7 +46,6 @@ namespace Simple
                                 GammaCorrectionFilter().
                                 Scale(size).
                                 Save(dirInfo.FullName, file.Name);
-                                Console.WriteLine($"Save image {file.GetHashCode().ToString() + ".png"}");
                             }
                             catch (Exception ex)
                             {
@@ -52,11 +53,13 @@ namespace Simple
                             }
                         }
                     });
+
+                    Console.WriteLine($"Изменение изображений в каталоге {dirInfo.Name} закончено.");
                 }
             }
 
-
-            Console.WriteLine("Continue? [y/n]");
+            Console.WriteLine($"Изменение изображений закончено.");
+            Console.WriteLine("Хотите смеить каталог? [y/n]");
             string answer = Console.ReadLine() ?? "n";
             if (answer.ToLower().StartsWith("y"))
             {
