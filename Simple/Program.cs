@@ -21,7 +21,7 @@ namespace Simple
             DirectoryInfo topDir = new DirectoryInfo(path);
             DirectoryInfo[] paths = topDir.GetDirectories();
 
-            Console.WriteLine($"Число классов: {path.Length}");
+            Console.WriteLine($"Число классов: {paths.Length}");
 
             foreach (DirectoryInfo dirInfo in paths)
             {
