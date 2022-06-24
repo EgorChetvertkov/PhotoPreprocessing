@@ -59,7 +59,7 @@ namespace Simple
             }
 
             Console.WriteLine($"Изменение изображений закончено.");
-            Console.WriteLine("Хотите смеить каталог? [y/n]");
+            Console.WriteLine("Хотите сменить каталог? [y/n]");
             string answer = Console.ReadLine() ?? "n";
             if (answer.ToLower().StartsWith("y"))
             {
