@@ -40,7 +40,7 @@ namespace Simple
                         {
                             try
                             {
-                                _ = new SafeTransformer(new Mat(file.FullName)).
+                                _ = new SelfTransformer(new Mat(file.FullName)).
                                 Filter(5).
                                 EqualizeHist().
                                 GammaCorrectionFilter().

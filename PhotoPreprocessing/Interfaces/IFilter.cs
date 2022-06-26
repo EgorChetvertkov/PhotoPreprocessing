@@ -11,11 +11,11 @@ namespace PhotoPreprocessing.Interfaces
         Mat GammaCorrection(Mat image);
     }
 
-    internal interface ISafeFilter
+    internal interface ISelfFilter
     {
-        SafeTransformer Filter(int kernelSize);
-        SafeTransformer ContrastFilter();
-        SafeTransformer SobelFilter();
-        SafeTransformer GammaCorrectionFilter();
+        SelfTransformer Filter(int kernelSize);
+        SelfTransformer ContrastFilter();
+        SelfTransformer SobelFilter();
+        SelfTransformer GammaCorrectionFilter();
     }
 }

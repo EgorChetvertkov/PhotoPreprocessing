@@ -7,8 +7,8 @@ namespace PhotoPreprocessing.Interfaces
         void Save(Mat image, string pathToSave, string fileName);
     }
 
-    internal interface ISafeSaver
+    internal interface ISalfSaver
     {
-        SafeTransformer Save(string pathToSave, string fileName);
+        SelfTransformer Save(string pathToSave, string fileName);
     }
 }

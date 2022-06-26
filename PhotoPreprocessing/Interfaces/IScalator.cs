@@ -8,9 +8,9 @@ namespace PhotoPreprocessing.Interfaces
         Mat Scale(Mat image, Size newShape);
     }
 
-    internal interface ISafeScalator
+    internal interface ISelfScalator
     {
-        SafeTransformer Scale(int newShape);
-        SafeTransformer Scale(Size newShape);
+        SelfTransformer Scale(int newShape);
+        SelfTransformer Scale(Size newShape);
     }
 }

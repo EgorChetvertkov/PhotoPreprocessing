@@ -7,8 +7,8 @@ namespace PhotoPreprocessing.Interfaces
         Mat EqualizeHist(Mat image);
     }
 
-    internal interface ISafeEqualizer
+    internal interface ISalfEqualizer
     {
-        SafeTransformer EqualizeHist();
+        SelfTransformer EqualizeHist();
     }
 }

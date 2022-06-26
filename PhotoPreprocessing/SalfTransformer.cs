@@ -6,18 +6,18 @@ using System.Text;
 
 namespace PhotoPreprocessing
 {
-    public class SafeTransformer : ISafeScalator, ISafeSaver, ISafeEqualizer, ISafeFilter
+    public class SelfTransformer : ISelfScalator, ISalfSaver, ISalfEqualizer, ISelfFilter
     {
         private Mat _image;
 
         public Mat Image { set { _image = value ?? throw new ArgumentNullException(nameof(value), "Изображение должно существовать!"); } }
 
-        public SafeTransformer(Mat image)
+        public SelfTransformer(Mat image)
         {
             _image = image ?? throw new ArgumentNullException(nameof(image), "Изображение должно существовать!");
         }
 
-        public SafeTransformer EqualizeHist()
+        public SelfTransformer EqualizeHist()
         {
             if (_image == null)
             {
@@ -36,7 +36,7 @@ namespace PhotoPreprocessing
             return this;
         }
 
-        public SafeTransformer Save(string pathToSave, string fileName)
+        public SelfTransformer Save(string pathToSave, string fileName)
         {
             if (_image == null)
             {
@@ -60,7 +60,7 @@ namespace PhotoPreprocessing
             return this;            
         }
 
-        public SafeTransformer Scale(int newShape)
+        public SelfTransformer Scale(int newShape)
         {
             if (_image == null)
             {
@@ -72,7 +72,7 @@ namespace PhotoPreprocessing
             return this;
         }
 
-        public SafeTransformer Scale(Size newShape)
+        public SelfTransformer Scale(Size newShape)
         {
             if (_image == null)
             {
@@ -84,7 +84,7 @@ namespace PhotoPreprocessing
             return this;
         }
 
-        public SafeTransformer Filter(int kernelSize)
+        public SelfTransformer Filter(int kernelSize)
         {
             if (_image == null)
             {
@@ -97,7 +97,7 @@ namespace PhotoPreprocessing
             return this;
         }
 
-        public SafeTransformer ContrastFilter()
+        public SelfTransformer ContrastFilter()
         {
             if (_image == null)
             {
@@ -111,7 +111,7 @@ namespace PhotoPreprocessing
             return this;
         }
 
-        public SafeTransformer SobelFilter()
+        public SelfTransformer SobelFilter()
         {
             if (_image == null)
             {
@@ -133,7 +133,7 @@ namespace PhotoPreprocessing
             return this;
         }
 
-        public SafeTransformer GammaCorrectionFilter()
+        public SelfTransformer GammaCorrectionFilter()
         {
             if (_image == null)
             {
